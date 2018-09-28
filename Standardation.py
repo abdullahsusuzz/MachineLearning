@@ -1,8 +1,8 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 """
 Created on Wed Sep 26 17:04:42 2018
 
-@author: Abdullah
+@author: abdullahsusuzz
 
 """
 import numpy as np
@@ -30,11 +30,11 @@ lr.fit(x_train,y_train)
                       #standartlasırsa daha iyi sonuc veriri o daha sonra
 tahmin = lr.predict(x_test)
 
-x_train = x_train.sort_index()
-y_train = y_train.sort_index()
+X_train = X_train.sort_index()
+Y_train = Y_train.sort_index()
 
-plt.plot(x_train,y_train) 
-plt.plot(x_test,lr.predict(x_test))
+plt.plot(X_train,Y_train) 
+plt.plot(X_test,lr.predict(X_test))
 
 
 plt.title('Aylara gore urun satısı')
