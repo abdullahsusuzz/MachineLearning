@@ -1,0 +1,40 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Oct  2 07:28:32 2018
+
+@author: Abdullah
+"""
+
+1 degiskenli sonuclar
+
+lin_reg :
+R-squared:                       0.942
+
+poly-reg : 
+R-squared:                       0.759
+
+svr_reg : 
+R-squared:                       0.770
+
+dt_reg : 
+R-squared:                       0.751
+
+rf_reg : 
+R-squared:                       0.719
+
+3.egiskenli sonuclar
+
+lin_teg :
+R-squared:                       0.903
+
+poly_reg :
+R-squared:                       0.680
+
+svr_reg : 
+R-squared:                       0.782
+
+dt_reg :
+R-squared:                       0.679
+
+rf_reg :
+R-squared:                       0.713
