@@ -1,30 +1,35 @@
 # -*- coding: utf-8 -*-
 """
-Created on Fri Sep 28 22:39:45 2018
+Created on Sun Nov 21 22:39:45 2021
 
 @author: abdullahsusuzz
 """
 
-import numpy as np
 import pandas as pd
+import numpy as np
 import matplotlib.pyplot as plt
+from sklearn.metrics import confusion_matrix
 
-dataSet = pd.read_csv('maaslar.csv')
+veriler = pd.read_csv('play_tennis.csv')
 
-x = dataSet.iloc[:,1:2]
-y = dataSet.iloc[:,2:]
 
-X = x.values
-Y = y.values
-#bu regresyonun sıkıntısı ilk olarak olusan sonuclar haricindeki tahminlerin 
-#sonuclarınıda hep aynı bulması
-from sklearn.tree import DecisionTreeRegressor
-dt_reg = DecisionTreeRegressor(random_state=0)
-dt_reg.fit(X,Y)
+X = veriler.iloc[:,1:5].values
+Y = veriler.iloc[:,5:].values 
 
-plt.scatter(X,Y,color='red')
-plt.plot(X,dt_reg.predict(X),color='blue')
+from sklearn.model_selection import train_test_split
 
-print(dt_reg.predict(10.4))#50000
-print(dt_reg.predict(9.6))#50000
-#iki degeride aynı yere map ettiginden iki sonucta aynı cıkar
+x_train,x_test,y_train,y_test = train_test_split(X,Y,test_size=0.33,random_state=0)
+
+from sklearn import preprocessing
+le = preprocessing.LabelEncoder()
+X_train = le.fit_transform(x_train[:,0])
+X_test = le.transform(y_train[:,0])
+
+from sklearn.tree import DecisionTreeClassifier
+dtc = DecisionTreeClassifier(criterion = 'entropy')
+dtc.fit(X_train,y_train)
+
+y_pred= dtc.predict(X_test)
+
+cm=confusion_matrix(y_pred,y_test)
+print(cm)
